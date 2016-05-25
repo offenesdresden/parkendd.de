@@ -1,0 +1,78 @@
+#map { 
+height: 100%; 
+width: 100%;
+position: absolute;
+}
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+.labelgrey {
+  border-color: silver  !important;
+  border-width: 2px !important;
+  color: grey !important;
+  margin-top: 2px !important;
+  padding: 0px 5px !important; 
+}
+.labelgrey::before {
+  display: none !important;
+}
+.labelgrey::after {
+  display: none !important;
+}
+
+.labelgreen {
+  border-color: green  !important;
+  border-width: 2px !important;
+  color: green !important;
+  margin-top: 2px !important;
+  padding: 0px 5px !important; 
+}
+.labelgreen::before {
+  display: none !important;
+}
+.labelgreen::after {
+  display: none !important;
+}
+
+.labelyellow {
+  border-color: #ff8624  !important;
+  border-width: 2px !important;
+  color: black !important;
+  margin-top: 2px !important;
+  padding: 0px 5px !important; 
+}
+.labelyellow::before {
+  display: none !important;
+}
+.labelyellow::after {
+  display: none !important;
+}
+
+.labelblue {
+  border-color: blue  !important;
+  border-width: 2px !important;
+  color: blue !important;
+  margin-top: 2px !important;
+  padding: 0px 5px !important; 
+}
+.labelblue::before {
+  display: none !important;
+}
+.labelblue::after {
+  display: none !important;
+}
+
+.labelred {
+  border-color: red  !important;
+  border-width: 2px !important;
+  color: red !important;
+  margin-top: 2px !important;
+  padding: 0px 5px !important; 
+}
+.labelred::before {
+  display: none !important;
+}
+.labelred::after {
+  display: none !important;
+}

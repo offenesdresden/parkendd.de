@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="media/icon.png">
+    <title id="title"></title>
+    <!-- Bootstrap core CSS -->
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="lib/css/carousel.css" rel="stylesheet">
+    <!-- Map CSS -->
+    <link rel="stylesheet" href="lib/css/leaflet.css" />
+    <link rel="stylesheet" href="lib/css/leaflet.label.css" />
+    <link rel="stylesheet" href="lib/css/map-label.css"/>
+    <!-- Piwik -->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDomains", ["*.jkliemann.de","*.parkendd.de"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//jkliemann.de/analytics/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', 1]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript><p><img src="//jkliemann.de/analytics/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html" style="padding-top: 3px; padding-bottom: 3px; height: 44px;">
+                <img alt="ParkenDD" src="media/icon44.png">
+              </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">ParkenDD</a></li>
+                <li class="active"><a href="map.html">Karte</a></li>
+                <li><a href="opendata.html">OpenData</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="ccity"></a>
+                  <ul class="dropdown-menu" id="citychooser"></ul></li>
+                <li><a href="en/map.html">English</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div id="map" style="left:0;"></div>
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="lib/js/jquery.min.js"><\/script>')</script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <!-- Map script -->
+    <script src="lib/js/leaflet.js"></script>
+    <script src="lib/js/leaflet.label.js"></script>
+    <script src="lib/js/parken.js"></script>
+    <script type="text/javascript">
+      function appendCities(cities, ul){
+        for(var i = 0; i < cities.length; i++){
+        li = document.createElement("li");
+        a = document.createElement("a");
+        a.setAttribute("href", "#" + cities[i]);
+        a.setAttribute("onClick", "location.hash = \"" + cities[i] + "\"; location.reload();")
+        a.appendChild(document.createTextNode(initdata.cities[cities[i]].name));
+        li.appendChild(a);
+        ul.appendChild(li);
+      }
+      }
+      var req = new XMLHttpRequest();
+      req.open("GET", "https://api.parkendd.de", false);
+      req.send();
+      var initdata = JSON.parse(req.responseText);
+      var cities = Object.keys(initdata.cities);
+      var active_support = [];
+      var no_support = [];
+      for(var i = 0; i < cities.length; i++){
+        if(initdata.cities[cities[i]].active_support){
+          active_support.push(cities[i]);
+        }else{
+          no_support.push(cities[i]);
+        }
+      }
+      cid = location.hash.replace("#", "")
+      if(cid == ""){
+        cid = "Dresden";
+      }
+      var title = document.getElementById("title");
+      title.appendChild(document.createTextNode("Karte - " + initdata.cities[cid].name));
+      var drop = document.getElementById("ccity");
+      drop.appendChild(document.createTextNode(initdata.cities[cid].name));
+      var caret = document.createElement("span");
+      caret.className = "caret";
+      drop.appendChild(caret);
+      var ul = document.getElementById("citychooser");
+      appendCities(active_support, ul);
+      var separator = document.createElement("li");
+      separator.className = "divider";
+      separator.setAttribute("role", "separator");
+      ul.appendChild(separator);
+      var beta = document.createElement("li");
+      beta.className = "dropdown-header";
+      beta.appendChild(document.createTextNode("BETA"));
+      ul.appendChild(beta);
+      appendCities(no_support, ul);
+      var city = initdata.cities[cid]
+      var map = L.map('map').setView([city.coords.lat, city.coords.lng], 15);
+
+      if(L.Browser.retina) var tp = "lr";
+      else var tp = "ls";
+
+      L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=78be313986c84fbfa6c188a1d1385303', {
+        attribution: 'Dank an <a href="https://github.com/ubahnverleih/parkenDD">ubahnverleih</a>, <a href="http://geodienste.lyrk.de/copyright">OpenStreetMap und andere</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
+        maxZoom: 18
+      }).addTo(map);
+      map.on('moveend', function(){onMove();});
+    </script>
+  </body>
+</html>

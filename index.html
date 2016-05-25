@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="media/icon.png">
+    <title>ParkenDD</title>
+    <!-- Bootstrap core CSS -->
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="lib/css/carousel.css" rel="stylesheet">
+    <link href="lib/css/parkendd.css" rel="stylesheet">
+    <!-- Heise Shariff -->
+    <link href="lib/css/shariff.complete.css" rel="stylesheet">
+    <!-- Piwik -->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDomains", ["*.jkliemann.de","*.parkendd.de"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//jkliemann.de/analytics/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', 1]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript><p><img src="//jkliemann.de/analytics/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html" style="padding-top: 3px; padding-bottom: 3px; height: 44px;">
+                <img alt="ParkenDD" src="media/icon44.png">
+              </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">ParkenDD</a></li>
+                <li><a href="map.html">Karte</a></li>
+                <li><a href="opendata.html">OpenData</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="en/index.html">English</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="carousel" class="carousel slide" data-ride="carousel"  style="height:400px; margin-bottom: 40px;">
+      <div class="carousel-inner" role="listbox">
+        <div class="item active"  style="height:400px; width:1920px;">
+          <img class="first-slide cslide" src="media/car_map.png" alt="First slide" style="width:100%;">
+          <div class="container">
+          </div>
+        </div>
+        <div class="item"  style="height:400px; width:1920px; overflow:hidden;">
+          <img class="second-slide cslide" src="media/pls.png" alt="First slide" style="width:100%;">
+          <div class="container">
+          </div>
+        </div>
+        <div class="item"  style="height:400px; width:1920px; overflow:hidden;">
+          <img class="third-slide cslide" src="media/car_map.png" alt="First slide" style="width:100%;">
+          <div class="container">
+          </div>
+        </div>
+      </div>
+      <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>-->
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-lg-4 hidden-lg">
+          <div class="well">
+            <p align="justify">ParkenDD zeigt Dir die aktuelle Parksituation in verschiedenen europäischen Städten. Abhängig von den Daten erhältst Du die aktuelle Anzahl freier öffentlicher Parkplätze sowie deren Standorte. Für einige Parkplätze stehen auch experimentelle Vorhersagen
+            zur Verfügung. Momentan werden die Städte Dresden, Ingolstadt, Zürich und Hamburg unterstützt, weitere sind zur Zeit nur experimentell verfügbar.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <img class="hidden-md hidden-sm hidden-xs frame" src="media/ios_frame.png" alt="ParkenDD iOS screenshot"/>
+          <a href="https://itunes.apple.com/de/app/parkendd/id957165041"><img class="store-badge" src="media/appstore.svg" alt="ParkenDD iOS" style="padding-top:6px;"/></a>
+        </div>
+        <div class="col-lg-4">
+          <img class="hidden-md hidden-sm hidden-xs frame" src="media/android_frame.png" alt="ParkenDD Android screenshot"/>
+          <a href="https://play.google.com/store/apps/details?id=de.jkliemann.parkendd"><img class="store-badge" src="media/de_badge_web_generic.png" alt="ParkenDD Android" style="padding-top:6px;"/></a>
+        </div>
+        <div class="col-lg-4">
+          <img class="hidden-md hidden-sm hidden-xs frame" src="media/windows_frame.png" alt="ParkenDD Windows screenshot"/>
+          <a href="https://www.microsoft.com/store/apps/9nblggh1p0sr"><img class="store-badge" src="media/wstore-de.png" alt="ParkenDD Windows"/></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 hidden-sm hidden-xs hidden-md">
+          <div class="well">
+            <p align="justify">ParkenDD zeigt Dir die aktuelle Parksituation in verschiedenen europäischen Städten. Abhängig von den Daten erhältst Du die aktuelle Anzahl freier öffentlicher Parkplätze sowie deren Standorte. Für einige Parkplätze stehen auch experimentelle Vorhersagen zur Verfügung. Momentan werden die Städte Dresden, Ingolstadt, Zürich und Hamburg unterstützt, weitere sind zur Zeit nur experimentell verfügbar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="shariff" data-services="[&quot;facebook&quot;,&quot;twitter&quot;,&quot;googleplus&quot;,&quot;whatsapp&quot;,&quot;reddit&quot;,&quot;flattr&quot;,&quot;diaspora&quot;]" data-title="ParkenDD" data-flattr-user="jklmnn" data-lang="de" data-url="https://parkendd.de" data-twitter-via="parken_dd"></div>
+        </div>
+      </div>
+      
+      <!-- FOOTER -->
+      <footer>
+        <p>ParkenDD &middot; <a href="contact.html#privacy">Datenschutz</a> &middot; <a href="contact.html#contact">Kontakt</a> &middot; <a href="contact.html#licenses">Lizenzen</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="lib/js/jquery.min.js"><\/script>')</script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <!-- Heise Shariff -->
+    <script src="lib/js/shariff.complete.js"></script>
+  </body>
+</html>

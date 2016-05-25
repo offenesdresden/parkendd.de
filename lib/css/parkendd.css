@@ -1,0 +1,37 @@
+
+.frame{
+  height:400px;
+  margin-bottom:10px;
+  margin-top:-152px;
+}
+
+.store-badge{
+  width:203px;
+  margin-bottom:10px;
+}
+
+#carousel {
+  max-width:1920px;
+  margin: 0 auto;
+  overflow:hidden;
+}
+
+#carousel .carousel-inner {
+  width:1920px;
+  position:relative;
+  left:50%;
+  margin-left:-50%;
+}
+
+#carousel img.cslide {
+  display:block;
+  margin: 0px auto;
+}
+
+.fh-small {
+  margin-top:10px;
+}
+
+.fh-img-center {
+  top:50px;
+}
