@@ -16,6 +16,10 @@
     <link href="../lib/css/parkendd.css" rel="stylesheet">
     <!-- Heise Shariff -->
     <link href="../lib/css/shariff.complete.css" rel="stylesheet">
+    <!-- Map CSS -->
+    <link rel="stylesheet" href="../lib/css/leaflet.css" />
+    <link rel="stylesheet" href="../lib/css/leaflet.label.css" />
+    <link rel="stylesheet" href="../lib/css/map-label.css"/>
     <!-- Piwik -->
       <script type="text/javascript">
         var _paq = _paq || [];
@@ -71,31 +75,7 @@
     <!-- Carousel
     ================================================== -->
     <div id="carousel" class="carousel slide" data-ride="carousel"  style="height:400px; margin-bottom: 40px;">
-      <div class="carousel-inner" role="listbox">
-        <div class="item active"  style="height:400px; width:1920px;">
-          <img class="first-slide cslide" src="../media/car_map.png" alt="First slide" style="width:100%;">
-          <div class="container">
-          </div>
-        </div>
-        <div class="item"  style="height:400px; width:1920px; overflow:hidden;">
-          <img class="second-slide cslide" src="../media/pls.png" alt="First slide" style="width:100%;">
-          <div class="container">
-          </div>
-        </div>
-        <div class="item"  style="height:400px; width:1920px; overflow:hidden;">
-          <img class="third-slide cslide" src="../media/car_map.png" alt="First slide" style="width:100%;">
-          <div class="container">
-          </div>
-        </div>
-      </div>
-      <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>-->
+      <div id="map" style="left:0;"></div>
     </div><!-- /.carousel -->
 
 
@@ -151,5 +131,42 @@
     <script src="../lib/js/bootstrap.min.js"></script>
     <!-- Heise Shariff -->
     <script src="../lib/js/shariff.complete.js"></script>
+    <!-- Map script -->
+    <script src="../lib/js/leaflet.js"></script>
+    <script src="../lib/js/leaflet.label.js"></script>
+    <script src="../lib/js/parken-en.js"></script>
+    <script type="text/javascript">
+      function appendCities(cities, ul){
+        for(var i = 0; i < cities.length; i++){
+        li = document.createElement("li");
+        a = document.createElement("a");
+        a.setAttribute("href", "#" + cities[i]);
+        a.setAttribute("onClick", "location.hash = \"" + cities[i] + "\"; location.reload();")
+        a.appendChild(document.createTextNode(initdata.cities[cities[i]].name));
+        li.appendChild(a);
+        ul.appendChild(li);
+      }
+      }
+      var req = new XMLHttpRequest();
+      req.open("GET", "https://api.parkendd.de", false);
+      req.send();
+      var initdata = JSON.parse(req.responseText);
+      cid = "Dresden";
+      var city = initdata.cities[cid]
+      var map = L.map('map').setView([city.coords.lat, city.coords.lng], 15);
+
+      if(L.Browser.retina) var tp = "lr";
+      else var tp = "ls";
+
+      L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=78be313986c84fbfa6c188a1d1385303', {
+        attribution: 'Dank an <a href="https://github.com/ubahnverleih/parkenDD">ubahnverleih</a>, <a href="http://geodienste.lyrk.de/copyright">OpenStreetMap und andere</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
+        maxZoom: 18
+      }).addTo(map);
+      map.on('moveend', function(){onMove();});
+      var lltl = document.getElementsByClassName("leaflet-top leaflet-left")[0];
+      lltl.style.visibility = "hidden";
+      var llbr = document.getElementsByClassName("leaflet-bottom leaflet-right")[0];
+      llbr.style.visibility = "hidden";
+    </script>
   </body>
 </html>
