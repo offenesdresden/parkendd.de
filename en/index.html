@@ -159,14 +159,13 @@
       else var tp = "ls";
 
       L.tileLayer('http://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=78be313986c84fbfa6c188a1d1385303', {
-        attribution: 'Dank an <a href="https://github.com/ubahnverleih/parkenDD">ubahnverleih</a>, <a href="http://geodienste.lyrk.de/copyright">OpenStreetMap und andere</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
+        attribution: '<a href="contact.html#licenses">Attribution</a>',
         maxZoom: 18
       }).addTo(map);
       map.on('moveend', function(){onMove();});
+      map.scrollWheelZoom.disable();
       var lltl = document.getElementsByClassName("leaflet-top leaflet-left")[0];
       lltl.style.visibility = "hidden";
-      var llbr = document.getElementsByClassName("leaflet-bottom leaflet-right")[0];
-      llbr.style.visibility = "hidden";
     </script>
   </body>
 </html>
