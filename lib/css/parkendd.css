@@ -10,22 +10,10 @@
   margin-bottom:10px;
 }
 
-#carousel {
-  max-width:1920px;
-  margin: 0 auto;
-  overflow:hidden;
-}
-
-#carousel .carousel-inner {
-  width:1920px;
-  position:relative;
-  left:50%;
-  margin-left:-50%;
-}
-
-#carousel img.cslide {
-  display:block;
-  margin: 0px auto;
+#carousel{
+  height:50vh;
+  margin-bottom: 40px;
+  max-height:400px;
 }
 
 .fh-small {
