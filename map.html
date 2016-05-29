@@ -62,7 +62,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="ccity"></a>
                   <ul class="dropdown-menu" id="citychooser"></ul></li>
-                <li><a href="en/map.html">English</a></li>
+                <li><a href="en/map.html" id="lang">English</a></li>
               </ul>
             </div>
           </div>
@@ -116,6 +116,8 @@
       if(cid == ""){
         cid = "Dresden";
       }
+      var lang = document.getElementById("lang");
+      lang.setAttribute("href", "en/map.html#" + cid);
       var title = document.getElementById("title");
       title.appendChild(document.createTextNode("Karte - " + initdata.cities[cid].name));
       var drop = document.getElementById("ccity");
