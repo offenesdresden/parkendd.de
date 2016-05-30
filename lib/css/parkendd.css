@@ -6,8 +6,16 @@
 }
 
 .store-badge{
-  width:203px;
   margin-bottom:10px;
+  display:block;
+}
+
+.badge-lg{
+  height:60px;
+}
+
+.badge-mob{
+  width:203px;
 }
 
 #carousel{
