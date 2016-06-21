@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../media/icon.png">
-    <title id="title"></title>
+    <title id="title">Map</title>
     <!-- Bootstrap core CSS -->
     <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -103,7 +103,7 @@
       var lang = document.getElementById("lang");
       lang.setAttribute("href", "../map.html#" + cid);
       var title = document.getElementById("title");
-      title.appendChild(document.createTextNode("Karte - " + initdata.cities[cid].name));
+      title.innerHTML = "Map - " + initdata.cities[cid].name;
       var drop = document.getElementById("ccity");
       drop.appendChild(document.createTextNode(initdata.cities[cid].name));
       var caret = document.createElement("span");
