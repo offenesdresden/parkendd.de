@@ -66,7 +66,7 @@
     </div>
     
     <div class="container" style="margin-top:100px;">
-      <div class="jumbotron">
+      <div class="container">
         <span id="contact"><h2>Kontakt</h2></span>
         <p>Der Kontakt zu den Entwicklern kann über die jeweiligen Stores der Apps, über Github oder hier direkt per E-Mail erfolgen.</p>
         <div class="row">
@@ -83,15 +83,24 @@
           </div>
         </div>
       </div>
-      <div class="jumbotron">
+      <div class="container">
         <span id="privacy"><h2>Datenschutz</h2></span>
         <p>Die App ParkenDD sammelt anonym Nutzungsdaten. Diese Daten werden nicht an Dritte weitergegeben und lassen keine Rückschlüsse auf die Identität des Nutzers zu. Für das Tracking dieser Seite gelten die gleichen Bedingungen.</p>
         <div class="well">
           <iframe style="border: 0; width:100%;" src="https://jkliemann.de/analytics/index.php?module=CoreAdminHome&action=optOut&language=de"></iframe>
         </div>
       </div>
-      <div class="jumbotron">
+      <div class="container">
         <span id="licenses"><h2>Lizenzen</h2></span>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Daten</h3>
+          </div>
+          <div class="panel-body">
+            <div class="list-group" id="attribution_list">
+            </div>
+          </div>
+        </div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">ParkenDD Logo</h3>
@@ -124,6 +133,48 @@
     </div>
     
 
+    <script type="text/javascript">
+      function createAttribution(parent, city, url, attributor, license){
+        console.log(city, url, attributor, license);
+        var item = document.createElement("a");
+        item.className = "list-group-item";
+        item.setAttribute("href", url);
+        var heading = document.createElement("h4");
+        heading.className = "list-group-item-heading";
+        heading.appendChild(document.createTextNode(city));
+        item.appendChild(heading);
+        var text = document.createElement("p");
+        text.className = "list-group-item-text";
+        item.appendChild(text);
+        var table = document.createElement("table");
+        table.className = "table";
+        var tbody = document.createElement("tbody");
+        var row = document.createElement("tr");
+        var td = document.createElement("td");
+        td.appendChild(document.createTextNode(attributor));
+        row.appendChild(td);
+        var td = document.createElement("td");
+        td.appendChild(document.createTextNode(license));
+        row.appendChild(td);
+        tbody.appendChild(row);
+        table.style.margin = 0;
+        table.appendChild(tbody);
+        text.appendChild(table);
+        parent.appendChild(item);
+      }
+    
+      var req = new XMLHttpRequest();
+      req.open("GET", "https://api.parkendd.de", false);
+      req.send();
+      var initdata = JSON.parse(req.responseText);
+      var cities = Object.keys(initdata.cities);
+      var parent = document.getElementById("attribution_list");
+      for( var i = 0; i < cities.length; i++ ){
+        if( initdata.cities[cities[i]].attribution != null){
+          createAttribution(parent, initdata.cities[cities[i]].name, initdata.cities[cities[i]].attribution.url, initdata.cities[cities[i]].attribution.contributor, initdata.cities[cities[i]].attribution.license);
+        }
+      }
+    </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
