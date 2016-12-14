@@ -7,6 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="Content-Language" content="en">
     <link rel="icon" href="../media/icon.png">
     <title id="title">Map</title>
     <!-- Bootstrap core CSS -->
@@ -54,11 +55,11 @@
 
       </div>
     </div>
-    
+
     <div class="container-fluid">
       <div id="map" style="left:0;"></div>
     </div>
-    
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -69,69 +70,7 @@
     <!-- Map script -->
     <script src="../lib/js/leaflet.js"></script>
     <script src="../lib/js/leaflet.label.js"></script>
-    <script src="../lib/js/parken-en.js"></script>
-    <script type="text/javascript">
-      function appendCities(cities, ul){
-        for(var i = 0; i < cities.length; i++){
-        li = document.createElement("li");
-        a = document.createElement("a");
-        a.setAttribute("href", "#" + cities[i]);
-        a.setAttribute("onClick", "location.hash = \"" + cities[i] + "\"; location.reload();")
-        a.appendChild(document.createTextNode(initdata.cities[cities[i]].name));
-        li.appendChild(a);
-        ul.appendChild(li);
-      }
-      }
-      var req = new XMLHttpRequest();
-      req.open("GET", "https://api.parkendd.de", false);
-      req.send();
-      var initdata = JSON.parse(req.responseText);
-      var cities = Object.keys(initdata.cities);
-      var active_support = [];
-      var no_support = [];
-      for(var i = 0; i < cities.length; i++){
-        if(initdata.cities[cities[i]].active_support){
-          active_support.push(cities[i]);
-        }else{
-          no_support.push(cities[i]);
-        }
-      }
-      cid = location.hash.replace("#", "")
-      if(cid == ""){
-        cid = "Dresden";
-      }
-      var lang = document.getElementById("lang");
-      lang.setAttribute("href", "../map.html#" + cid);
-      var title = document.getElementById("title");
-      title.innerHTML = "Map - " + initdata.cities[cid].name;
-      var drop = document.getElementById("ccity");
-      drop.appendChild(document.createTextNode(initdata.cities[cid].name));
-      var caret = document.createElement("span");
-      caret.className = "caret";
-      drop.appendChild(caret);
-      var ul = document.getElementById("citychooser");
-      appendCities(active_support, ul);
-      var separator = document.createElement("li");
-      separator.className = "divider";
-      separator.setAttribute("role", "separator");
-      ul.appendChild(separator);
-      var beta = document.createElement("li");
-      beta.className = "dropdown-header";
-      beta.appendChild(document.createTextNode("BETA"));
-      ul.appendChild(beta);
-      appendCities(no_support, ul);
-      var city = initdata.cities[cid]
-      var map = L.map('map').setView([city.coords.lat, city.coords.lng], 15);
-
-      if(L.Browser.retina) var tp = "lr";
-      else var tp = "ls";
-
-      L.tileLayer('https://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=78be313986c84fbfa6c188a1d1385303', {
-        attribution: 'Dank an <a href="https://github.com/ubahnverleih/parkenDD">ubahnverleih</a>, <a href="http://geodienste.lyrk.de/copyright">OpenStreetMap und andere</a>, Tiles by <a href="http://geodienste.lyrk.de/">Lyrk</a>',
-        maxZoom: 18
-      }).addTo(map);
-      map.on('moveend', function(){onMove();});
-    </script>
+    <script src="../lib/js/map.js"></script>
     <!-- Piwik -->
     <script type="text/javascript">
       var _paq = _paq || [];
