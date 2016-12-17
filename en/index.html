@@ -7,6 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="Content-Language" content="en">
     <link rel="icon" href="../media/icon.png">
     <title>ParkenDD</title>
     <!-- Bootstrap core CSS -->
@@ -153,27 +154,6 @@
     <!-- Map script -->
     <script src="../lib/js/leaflet.js"></script>
     <script src="../lib/js/leaflet.label.js"></script>
-    <script src="../lib/js/parken-en.js"></script>
-    <script type="text/javascript">
-      var req = new XMLHttpRequest();
-      req.open("GET", "https://api.parkendd.de", false);
-      req.send();
-      var initdata = JSON.parse(req.responseText);
-      cid = "Dresden";
-      var city = initdata.cities[cid]
-      var map = L.map('map').setView([city.coords.lat, city.coords.lng], 15);
-
-      if(L.Browser.retina) var tp = "lr";
-      else var tp = "ls";
-
-      L.tileLayer('https://tiles.lyrk.org/'+tp+'/{z}/{x}/{y}?apikey=78be313986c84fbfa6c188a1d1385303', {
-        attribution: '<a href="contact.html#licenses">Attribution</a>',
-        maxZoom: 18
-      }).addTo(map);
-      map.on('moveend', function(){onMove();});
-      map.scrollWheelZoom.disable();
-      var lltl = document.getElementsByClassName("leaflet-top leaflet-left")[0];
-      lltl.style.visibility = "hidden";
-    </script>
+    <script src="../lib/js/map.js"></script>
   </body>
 </html>
