@@ -12,6 +12,7 @@
     <title>ParkenDD</title>
     <!-- Bootstrap core CSS -->
     <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/css/languages.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../lib/css/carousel.css" rel="stylesheet">
     <link href="../lib/css/parkendd.css" rel="stylesheet">
@@ -64,9 +65,9 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" style="margin-right:5px;">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="langlabel" class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="../index.html">Deutsch</a></li>
+                    <li><a href="../index.html"><span class="lang-lg lang-lbl" lang="de"></a></li>
                   </ul>
                 </li>
               </ul>
@@ -154,6 +155,11 @@
     <script src="../lib/js/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="lib/js/jquery.min.js"><\/script>')</script>
     <script src="../lib/js/bootstrap.min.js"></script>
+    <script>
+      var llabel = document.getElementById("langlabel");
+      llabel.className = "lang-sm";
+      llabel.setAttribute("lang", document.head.querySelector('[http-equiv=\'Content-Language\']').content);
+    </script>
     <!-- Heise Shariff -->
     <script src="../lib/js/shariff.complete.js"></script>
     <!-- Map script -->
