@@ -12,6 +12,7 @@
     <title id="title">Karte</title>
     <!-- Bootstrap core CSS -->
     <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css/languages.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="lib/css/carousel.css" rel="stylesheet">
     <!-- Map CSS -->
@@ -46,8 +47,14 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="ccity"></a>
-                  <ul class="dropdown-menu" id="citychooser"></ul></li>
-                <li><a href="en/map.html" id="lang">English</a></li>
+                  <ul class="dropdown-menu" id="citychooser"></ul>
+                </li>
+                <li class="dropdown" style="margin-right:5px;">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="langlabel" class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                  <ul class="dropdown-menu" id="langlist">
+                    <li><a href="en/map.html"><span class="lang-lg lang-lbl" lang="en"></a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
@@ -67,6 +74,11 @@
     <script src="lib/js/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="lib/js/jquery.min.js"><\/script>')</script>
     <script src="lib/js/bootstrap.min.js"></script>
+    <script>
+      var llabel = document.getElementById("langlabel");
+      llabel.className = "lang-sm";
+      llabel.setAttribute("lang", document.head.querySelector('[http-equiv=\'Content-Language\']').content);
+    </script>
     <!-- Map script -->
     <script src="lib/js/leaflet.js"></script>
     <script src="lib/js/leaflet.label.js"></script>

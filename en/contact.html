@@ -7,10 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="Content-Language" content="en">
     <link rel="icon" href="../media/icon.png">
     <title id="title">Contact</title>
     <!-- Bootstrap core CSS -->
     <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/css/languages.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../lib/css/carousel.css" rel="stylesheet">
     <!-- Heise Shariff -->
@@ -57,7 +59,12 @@
                 <li><a href="opendata.html">OpenData</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="../contact.html">Deutsch</a></li>
+                <li class="dropdown" style="margin-right:5px;">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="langlabel" class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="../contact.html"><span class="lang-lg lang-lbl" lang="de"></a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
@@ -132,6 +139,11 @@
       </footer>
     </div>
     
+    <script>
+      var llabel = document.getElementById("langlabel");
+      llabel.className = "lang-sm";
+      llabel.setAttribute("lang", document.head.querySelector('[http-equiv=\'Content-Language\']').content);
+    </script>
     <script type="text/javascript">
       function createAttribution(parent, city, url, attributor, license){
         console.log(city, url, attributor, license);
