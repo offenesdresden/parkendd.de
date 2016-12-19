@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Language" content="en">
+    <link rel="icon" href="../media/icon.png">
+    <title>ParkenDD</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/css/languages.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../lib/css/carousel.css" rel="stylesheet">
+    <link href="../lib/css/parkendd.css" rel="stylesheet">
+    <!-- Heise Shariff -->
+    <link href="../lib/css/shariff.complete.css" rel="stylesheet">
+    <!-- Map CSS -->
+    <link rel="stylesheet" href="../lib/css/leaflet.css" />
+    <link rel="stylesheet" href="../lib/css/leaflet.label.css" />
+    <link rel="stylesheet" href="../lib/css/map-label.css"/>
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(["setDomains", ["*.parkendd.de","*.parkendd.de"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//jkliemann.de/analytics/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 4]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//jkliemann.de/analytics/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html" style="padding-top: 3px; padding-bottom: 3px; height: 44px;">
+                <img alt="ParkenDD" src="../media/icon44.png">
+              </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">ParkenDD</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="opendata.html">OpenData</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" style="margin-right:5px;">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="langlabel" class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="../index.html"><span class="lang-lg lang-lbl" lang="de"></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+      <div id="map" style="left:0;"></div>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-lg-4 hidden-lg">
+          <div class="well">
+            <p align="justify">ParkenDD shows you the current parking situation of various European cities, including Dresden, Ingolstadt and Zurich. Depending on the available data, you can see the current number of available public parking spots as well as their locations. For several parking spots, there is also some experimental forecast available. </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <img class="hidden-md hidden-sm hidden-xs frame" src="../media/ios_frame.png" alt="ParkenDD iOS screenshot"/>
+        </div>
+        <div class="col-lg-4">
+          <img class="hidden-md hidden-sm hidden-xs frame" src="../media/android_frame.png" alt="ParkenDD Android screenshot"/>
+        </div>
+        <div class="col-lg-4">
+          <img class="hidden-md hidden-sm hidden-xs frame" src="../media/windows_frame.png" alt="ParkenDD Windows screenshot"/>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom:10px;">
+        <div class="col-lg-3">
+          <div class="lg-3-center">
+            <a href="https://itunes.apple.com/de/app/parkendd/id957165041" style="display:inline-block;"><img class="store-badge badge-mob hidden-lg" src="../media/appstore-en.svg" alt="ParkenDD iOS"/><img class="store-badge badge-lg hidden-md hidden-sm hidden-xs" src="../media/appstore-en.svg" alt="ParkenDD iOS"/></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="lg-3-center">
+            <a href="https://play.google.com/store/apps/details?id=de.jkliemann.parkendd"><img class="store-badge badge-lg hidden-md hidden-sm hidden-xs" src="../media/en_badge_web_generic.png" alt="ParkenDD Android"/><img class="store-badge badge-mob hidden-lg" src="../media/en_badge_web_generic.png" alt="ParkenDD Android"/></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="lg-3-center">
+            <a href="https://f-droid.org/repository/browse/?fdid=de.jkliemann.parkendd"><img class="store-badge badge-lg hidden-md hidden-sm hidden-xs" src="../media/Get_it_on_F-Droid.svg" alt="ParkenDD F-Droid" style="margin-left:25px;"/><img class="store-badge badge-mob hidden-lg" src="../media/Get_it_on_F-Droid.svg" alt="ParkenDD F-Droid"/></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="lg-3-center">
+            <a href="https://www.microsoft.com/store/apps/9nblggh1p0sr"><img class="store-badge badge-lg hidden-md hidden-sm hidden-xs" src="../media/wstore-en.png" alt="ParkenDD Windows" style="margin-left:25px;"/><img class="store-badge badge-mob hidden-lg" src="../media/wstore-en.png" alt="ParkenDD Windows"/></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 hidden-sm hidden-xs hidden-md">
+          <div class="well">
+            <p align="justify">ParkenDD shows you the current parking situation of various European cities, including Dresden, Ingolstadt and Zurich. Depending on the available data, you can see the current number of available public parking spots as well as their locations. For several parking spots, there is also some experimental forecast available. </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="shariff" data-services="[&quot;facebook&quot;,&quot;twitter&quot;,&quot;googleplus&quot;,&quot;whatsapp&quot;,&quot;reddit&quot;,&quot;flattr&quot;,&quot;diaspora&quot;]" data-title="ParkenDD" data-flattr-user="jklmnn" data-lang="en" data-url="https://parkendd.de" data-twitter-via="parken_dd"></div>
+        </div>
+      </div>
+      
+      <!-- FOOTER -->
+      <footer>
+        <p>ParkenDD &middot; <a href="contact.html#privacy">Privacy</a> &middot; <a href="contact.html#contact">Contact</a> &middot; <a href="contact.html#licenses">Licensing</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../lib/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="lib/js/jquery.min.js"><\/script>')</script>
+    <script src="../lib/js/bootstrap.min.js"></script>
+    <script>
+      var llabel = document.getElementById("langlabel");
+      llabel.className = "lang-sm";
+      llabel.setAttribute("lang", document.head.querySelector('[http-equiv=\'Content-Language\']').content);
+    </script>
+    <!-- Heise Shariff -->
+    <script src="../lib/js/shariff.complete.js"></script>
+    <!-- Map script -->
+    <script src="../lib/js/leaflet.js"></script>
+    <script src="../lib/js/leaflet.label.js"></script>
+    <script src="../lib/js/map.js"></script>
+  </body>
+</html>
