@@ -47,13 +47,18 @@
         <div class="container" style="margin-top:100px;">
             <ul class="list-group">
                 <?php
+                    function human_filesize($bytes, $decimals = 2) {
+                        $sz = 'BKMGTP';
+                        $factor = floor((strlen($bytes) - 1) / 3);
+                        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+                    }
                     $files = array_filter(glob('*'), 'is_file');
                     if(($index = array_search("index.php", $files)) != false){
                         unset($files[$index]);
                     }
                     asort($files);
                     foreach($files as $file){
-                        echo '<a href="'.$file.'" class="list-group-item">'.$file.'</a>';
+                        echo '<a href="'.$file.'" class="list-group-item" download>'.$file.'<span class="badge">'.human_filesize(filesize($file)).'</span></a>';
                     }
                 ?>
             </ul>
