@@ -56,7 +56,7 @@
 <p>If larger timespans have 0 free lots, the parking spot isn't necessary full.
     It could also be closed or don't have live data for this time.</p>
 
-<p>If you want to get all data please download <a href="Archive.tar.xz">Archive.tar.xz</a>
+<p>If you want to get all data please download <a href="Archive.tar.xz" download>Archive.tar.xz</a>
     It's a compressed archive of all *.csv dumps.</p>
                 </div>
             </div>
@@ -67,10 +67,8 @@
                         $factor = floor((strlen($bytes) - 1) / 3);
                         return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
                     }
-                    $files = array_filter(glob('*'), 'is_file');
-                    if(($index = array_search("index.php", $files)) != false){
-                        unset($files[$index]);
-                    }
+                    echo '<a href="Archive.tar.xz" class="list-group-item" download>Archive.tar.xz<span class="badge">'.human_filesize(filesize("Archive.tar.xz")).'</span></a>';
+                    $files = array_filter(glob('*.csv'), 'is_file');
                     asort($files);
                     foreach($files as $file){
                         echo '<a href="'.$file.'" class="list-group-item" download>'.$file.'<span class="badge">'.human_filesize(filesize($file)).'</span></a>';
