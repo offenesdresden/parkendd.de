@@ -45,6 +45,21 @@
         </div>
 
         <div class="container" style="margin-top:100px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Dumps of the database from parkendd.de
+                </div>
+                <div class="panel-body">
+                    <p>Format:
+                        UTC timestamp,number of free lots</p>
+
+<p>If larger timespans have 0 free lots, the parking spot isn't necessary full.
+    It could also be closed or don't have live data for this time.</p>
+
+<p>If you want to get all data please download <a href="Archive.tar.xz">Archive.tar.xz</a>
+    It's a compressed archive of all *.csv dumps.</p>
+                </div>
+            </div>
             <ul class="list-group">
                 <?php
                     function human_filesize($bytes, $decimals = 2) {
