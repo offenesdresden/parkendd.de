@@ -58,6 +58,7 @@
 
 <p>If you want to get all data please download <a href="Archive.tar.xz" download>Archive.tar.xz</a>
     It's a compressed archive of all *.csv dumps.</p>
+<p>The files annotated with <code>backup-2015</code> are a backup from another instance and reach back to July 2015.</p>
                 </div>
             </div>
             <ul class="list-group">
@@ -68,6 +69,7 @@
                         return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
                     }
                     echo '<a href="Archive.tar.xz" class="list-group-item" download>Archive.tar.xz<span class="badge">'.human_filesize(filesize("Archive.tar.xz")).'</span></a>';
+                    echo '<a href="Backup2015.tar.xz" class="list-group-item" download>Backup2015.tar.xz<span class="badge">'.human_filesize(filesize("Backup2015.tar.xz")).'</span></a>';
                     $files = array_filter(glob('*.csv'), 'is_file');
                     asort($files);
                     foreach($files as $file){
