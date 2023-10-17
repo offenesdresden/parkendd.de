@@ -37,3 +37,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.marketing .col-lg-4 {
+  z-Index: 1000;
+}
