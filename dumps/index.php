@@ -92,6 +92,5 @@
         <script src="../lib/js/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="lib/js/jquery.min.js"><\/script>')</script>
         <script src="../lib/js/bootstrap.min.js"></script>
-        <script async defer data-domain="parkendd.de" src="https://geiger.kernkraftwerk.lol/js/plausible.js"></script>
       </body>
     </html>
